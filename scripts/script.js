@@ -91,4 +91,28 @@ function playRound() {
   return result;
 }
 
-playRound();
+function game() {
+  // Plays a BO5 of Rock Paper Scissors
+  let playerScore = 0;
+  let computerScore = 0;
+  let roundResult;
+  // Plays until score of 3
+  while (playerScore < 3 && computerScore < 3) {
+    roundResult = playRound();
+    if (roundResult == "player") {
+      playerScore++;
+    } else if (roundResult == "computer") {
+      computerScore++;
+    }
+    console.log(playerScore);
+    console.log(computerScore);
+  }
+  // Evaluates winner of the match
+  if (playerScore == 3) {
+    window.alert("The player has won the match!");
+  } else if (computerScore == 3) {
+    window.alert("The computer has won the match!");
+  }
+}
+
+game();
