@@ -1,7 +1,7 @@
 function computerPlay() {
   // Generates random number from 1 - 3, and selects move based on number
-  let numberPick = Math.floor((Math.random() * (3)) + 1);
   let computerMove;
+  let numberPick = Math.floor((Math.random() * (3)) + 1)
   switch(numberPick) {
     case 1:
       computerMove = "rock";
@@ -16,16 +16,27 @@ function computerPlay() {
   return computerMove;
 }
 
-function playerInput () {
+function playerPlay() {
   // Prompts player for input and checks if move is valid
-  let playerMove = prompt("Please Select Your Move.", "");
-  playerMove = playerMove.toLowerCase();
-  if (playerMove != "rock" && playerMove != "paper" && playerMove != "scissors") 
+  let playerMove
+  let selectionValid = 0;
+  while (selectionValid == 0) 
   {
-    console.log("Invalid Move!");
+    playerMove = prompt("Please Select Your Move.", "");
+    playerMove = playerMove.toLowerCase();
+    if (playerMove == "rock" || playerMove == "paper" || playerMove == "scissors") 
+    {
+      selectionValid = 1;
+    } else {
+      window.alert("Invalid Move!");
+    }
   }
   return playerMove;
 }
 
+function playRound() 
+{
+}
+
 console.log(computerPlay());
-console.log(playerInput());
+console.log(playerPlay());
