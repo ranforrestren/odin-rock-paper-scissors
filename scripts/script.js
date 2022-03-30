@@ -97,9 +97,24 @@ function scoreBoard(result) {
   console.log(computerScore);
   // Evaluates if there is a winner
   if (playerScore == 3) {
-    window.alert("The player has won the match!");
+    announceWinner("player");
   } else if (computerScore == 3) {
-    window.alert("The computer has won the match!");
+    announceWinner("computer");
   }
   return;
 } 
+
+function announceWinner(winner) {
+  // creates an HTML element to announce the winner
+  const container = document.querySelector('#resultsBox');
+  const winnerAnnouncement = document.createElement('h1');
+  if (winner == "player") {
+    winnerAnnouncement.innerText = "The Player Has Won!";
+    winnerAnnouncement.setAttribute('style', 'color: green');
+  } else if (winner == "computer") {
+    winnerAnnouncement.innerText = "The Computer Has Won!";
+    winnerAnnouncement.setAttribute('style', 'color: red');
+  }
+  container.appendChild(winnerAnnouncement);
+  return;
+}
