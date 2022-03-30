@@ -77,31 +77,29 @@ function playRound(e) {
   console.log(computerMove);
   console.log(playerMove);
   console.log(result);
-  return result;
+  scoreBoard(result);
+  return;
 }
 
-/*
-function game() {
-  // Plays a BO5 of Rock Paper Scissors
-  let playerScore = 0;
-  let computerScore = 0;
-  let roundResult;
-  // Plays until score of 3
-  while (playerScore < 3 && computerScore < 3) {
-    roundResult = playRound();
-    if (roundResult == "player") {
+function scoreBoard(result) {
+  // Collects current scoreboard from DOM and evaluates new score
+  let playerScore = parseInt(document.querySelector('#playerScore').innerText);
+  let computerScore = parseInt(document.querySelector('#computerScore').innerText);
+  // Updates scoreboard
+  if (result == "player") {
       playerScore++;
-    } else if (roundResult == "computer") {
+      document.querySelector('#playerScore').innerText = playerScore;
+    } else if (result == "computer") {
       computerScore++;
+      document.querySelector('#computerScore').innerText = computerScore;
     }
-    console.log(playerScore);
-    console.log(computerScore);
-  }
-  // Evaluates winner of the match
+  console.log(playerScore);
+  console.log(computerScore);
+  // Evaluates if there is a winner
   if (playerScore == 3) {
     window.alert("The player has won the match!");
   } else if (computerScore == 3) {
     window.alert("The computer has won the match!");
   }
+  return;
 } 
-*/
