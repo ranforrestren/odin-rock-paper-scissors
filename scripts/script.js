@@ -105,9 +105,13 @@ function scoreBoard(result) {
 } 
 
 function announceWinner(winner) {
-  // creates an HTML element to announce the winner
+  // creates HTML elements to announce the winner
   const container = document.querySelector('#resultsBox');
   const winnerAnnouncement = document.createElement('h1');
+  const resetButton = document.createElement('button');
+  winnerAnnouncement.classList.add("announce");
+  resetButton.classList.add("announce");
+  // styles winner announcement depending on winner
   if (winner == "player") {
     winnerAnnouncement.innerText = "The Player Has Won!";
     winnerAnnouncement.setAttribute('style', 'color: green');
@@ -115,6 +119,20 @@ function announceWinner(winner) {
     winnerAnnouncement.innerText = "The Computer Has Won!";
     winnerAnnouncement.setAttribute('style', 'color: red');
   }
+  // adds HTML elements to page
+  resetButton.innerText = "Play again?"
   container.appendChild(winnerAnnouncement);
+  container.appendChild(resetButton);
+  resetButton.addEventListener('click', resetGame);
   return;
+}
+
+function resetGame() {
+  // resets state of the game
+  document.querySelector('#playerScore').innerText = 0;
+  document.querySelector('#computerScore').innerText = 0;
+  // removes winner announcement nodes
+  document.querySelectorAll('.announce').forEach((element) => {
+    element.remove();
+  });
 }
